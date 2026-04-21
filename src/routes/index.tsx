@@ -144,9 +144,9 @@ function Home() {
         <footer className="mt-20 flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <span className="animate-bounce-slow text-lg">🐹</span>
-            <span>
-              made with <span className="animate-bounce-slow text-lg">🧀</span> by Krzyś
-            </span>
+            <span>made with </span>
+            <span className="animate-bounce-slow text-lg">🧀</span>
+            <span> by Krzyś</span>
           </div>
           <a
             href="https://github.com"
