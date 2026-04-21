@@ -13,9 +13,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "scooby.boo — projekty Krzysia 🐹" },
-      { name: "description", content: "Hub projektów Krzysia: webapki, skrypty w Pythonie i boty Discord. Polish vibe-coding." },
+      { name: "description", content: "Hub projektów Krzysia. Polish vibe-coding." },
       { property: "og:title", content: "scooby.boo — projekty Krzysia 🐹" },
-      { property: "og:description", content: "Hub projektów Krzysia: webapki, skrypty w Pythonie i boty Discord." },
+      { property: "og:description", content: "Hub projektów Krzysia." },
     ],
   }),
   component: Home,
@@ -30,15 +30,23 @@ function Home() {
       {/* Animated blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-32 -left-20 h-96 w-96 rounded-full bg-[var(--pink)] opacity-30 blur-3xl animate-blob" />
-        <div className="absolute top-40 -right-24 h-96 w-96 rounded-full bg-[var(--sky)] opacity-30 blur-3xl animate-blob" style={{ animationDelay: "-4s" }} />
-        <div className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-[var(--mint)] opacity-30 blur-3xl animate-blob" style={{ animationDelay: "-8s" }} />
+        <div
+          className="absolute top-40 -right-24 h-96 w-96 rounded-full bg-[var(--sky)] opacity-30 blur-3xl animate-blob"
+          style={{ animationDelay: "-4s" }}
+        />
+        <div
+          className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-[var(--mint)] opacity-30 blur-3xl animate-blob"
+          style={{ animationDelay: "-8s" }}
+        />
       </div>
 
       {/* Top bar */}
       <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-10">
         <div className="flex items-center gap-2 font-display text-lg font-bold">
           <span className="text-2xl">🐹</span>
-          <span>scooby<span className="text-[var(--pink)]">.boo</span></span>
+          <span>
+            scooby<span className="text-[var(--pink)]">.boo</span>
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <Button
@@ -111,8 +119,7 @@ function Home() {
             transition={{ delay: 0.55 }}
             className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg"
           >
-            Mała norka pełna projektów — webapki, skrypty Pythona i boty Discord.
-            Wbijaj, klikaj, baw się dobrze. 🧀
+            Mała norka pełna projektów! Wbijaj, klikaj, baw się dobrze. 🧀
           </motion.p>
         </section>
 
@@ -137,7 +144,9 @@ function Home() {
         <footer className="mt-20 flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <span className="animate-bounce-slow text-lg">🐹</span>
-            <span>made with cheese by Krzyś</span>
+            <span>
+              made with <span className="animate-bounce-slow text-lg">🧀</span> by Krzyś
+            </span>
           </div>
           <a
             href="https://github.com"
