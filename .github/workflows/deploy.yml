@@ -32,28 +32,17 @@ jobs:
         env:
           NODE_ENV: production
 
-      # TanStack Start (Cloudflare adapter) emits client assets to dist/client
-      # but no static index.html (HTML is normally rendered by the SSR worker).
-      # For GitHub Pages we ship the SEO-rich /index.html from the repo root,
-      # rewrite the asset script tag to point at the hashed bundle Vite built,
-      # and copy it to 404.html so SPA deep links work.
-      - name: Prepare Pages artifact
-        run: |
-          set -euo pipefail
-          DIST="dist/client"
-          [ -d "$DIST" ] || { echo "Missing $DIST"; exit 1; }
-          # Find the hashed entry chunk emitted by Vite.
-          ENTRY=$(ls "$DIST"/assets/index-*.js 2>/dev/null | head -n 1 | xargs -n1 basename)
-          if [ -z "${ENTRY:-}" ]; then
-            echo "Could not locate built entry chunk in $DIST/assets" && ls "$DIST/assets" && exit 1
-          fi
-          echo "Entry chunk: $ENTRY"
-          # Inject the script tag right before </body> in our root index.html
-          cp index.html "$DIST/index.html"
-          sed -i "s|</body>|  <script type=\"module\" src=\"/assets/$ENTRY\"></script>\n  </body>|" "$DIST/index.html"
-          cp "$DIST/index.html" "$DIST/404.html"
-          touch "$DIST/.nojekyll"
-          echo "DIST=$DIST" >> $GITHUB_ENV
+      # TanStack Start emits a Cloudflare worker fetch handler for SSR. We
+      # invoke it once at build time to prerender "/" into a real static
+      # dist/client/index.html that GitHub Pages can serve directly. The
+      # 404.html copy makes SPA deep-links work on github.io.
+      - name: Prerender static SPA
+        run: node scripts/prerender.mjs
+        env:
+          SITE_URL: https://scooby.boo/
+
+      - name: Set artifact dir
+        run: echo "DIST=dist/client" >> $GITHUB_ENV
 
       - uses: actions/upload-pages-artifact@v3
         with:
