@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pl" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#1a1326" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fdf7f0" media="(prefers-color-scheme: light)" />
+
+    <title>scooby.boo — projekty Krzysia 🐹</title>
+    <meta
+      name="description"
+      content="Hub projektów Krzysia: polskie webappki, skrypty i boty Discord. Cytaty polityczne, baza dowcipów i wyszukiwarka polskiego audio."
+    />
+    <meta name="author" content="Krzyś" />
+    <meta
+      name="keywords"
+      content="scooby.boo, Krzyś, polskie projekty, vibe coding, cytaty polityczne, dowcipy, polskie audio, dubbing, lektor, Discord bot, Python, webapp"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+    <link rel="canonical" href="https://scooby.boo/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" hreflang="pl" href="https://scooby.boo/" />
+    <link rel="alternate" hreflang="x-default" href="https://scooby.boo/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="scooby.boo" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content="https://scooby.boo/" />
+    <meta property="og:title" content="scooby.boo — projekty Krzysia 🐹" />
+    <meta
+      property="og:description"
+      content="Hub projektów Krzysia: polskie webappki, skrypty i boty Discord."
+    />
+    <meta property="og:image" content="https://scooby.boo/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="scooby.boo — fluffy white hamster mascot" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="scooby.boo — projekty Krzysia 🐹" />
+    <meta
+      name="twitter:description"
+      content="Hub projektów Krzysia: polskie webappki, skrypty i boty Discord."
+    />
+    <meta name="twitter:image" content="https://scooby.boo/og-image.png" />
+
+    <!-- Dark theme by default, no flash -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("scooby-theme");
+          if (t === "light") {
+            document.documentElement.classList.remove("dark");
+          } else {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://scooby.boo/#website",
+            "url": "https://scooby.boo/",
+            "name": "scooby.boo",
+            "description": "Hub projektów Krzysia.",
+            "inLanguage": "pl-PL"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://scooby.boo/#krzys",
+            "name": "Krzyś",
+            "url": "https://scooby.boo/",
+            "jobTitle": "Vibe-coder"
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    />
+  </head>
+  <body>
+    <noscript>
+      Ta strona wymaga JavaScript. This site requires JavaScript to run.
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>

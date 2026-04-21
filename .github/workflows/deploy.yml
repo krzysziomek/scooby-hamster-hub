@@ -1,0 +1,64 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static SPA
+        run: bun run build
+        env:
+          NODE_ENV: production
+
+      # TanStack Start with the Cloudflare adapter outputs to .output/public
+      # for static client assets. We publish that directory to Pages and add
+      # a 404.html fallback so SPA deep links work on github.io.
+      - name: Prepare Pages artifact
+        run: |
+          if [ -d ".output/public" ]; then
+            DIST=".output/public"
+          elif [ -d "dist" ]; then
+            DIST="dist"
+          else
+            echo "No build output directory found" && exit 1
+          fi
+          echo "Using $DIST"
+          cp "$DIST/index.html" "$DIST/404.html" || true
+          touch "$DIST/.nojekyll"
+          echo "DIST=$DIST" >> $GITHUB_ENV
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.DIST }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
