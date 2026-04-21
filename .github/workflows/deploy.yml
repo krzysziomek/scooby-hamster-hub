@@ -32,12 +32,14 @@ jobs:
         env:
           NODE_ENV: production
 
-      # TanStack Start with the Cloudflare adapter outputs to .output/public
-      # for static client assets. We publish that directory to Pages and add
-      # a 404.html fallback so SPA deep links work on github.io.
+      # TanStack Start (Cloudflare adapter) emits the static client bundle to
+      # dist/client. We publish that to Pages and add a 404.html SPA fallback
+      # so deep links work on github.io.
       - name: Prepare Pages artifact
         run: |
-          if [ -d ".output/public" ]; then
+          if [ -d "dist/client" ]; then
+            DIST="dist/client"
+          elif [ -d ".output/public" ]; then
             DIST=".output/public"
           elif [ -d "dist" ]; then
             DIST="dist"
@@ -45,7 +47,7 @@ jobs:
             echo "No build output directory found" && exit 1
           fi
           echo "Using $DIST"
-          cp "$DIST/index.html" "$DIST/404.html" || true
+          cp "$DIST/index.html" "$DIST/404.html"
           touch "$DIST/.nojekyll"
           echo "DIST=$DIST" >> $GITHUB_ENV
 
