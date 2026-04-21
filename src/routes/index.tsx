@@ -13,9 +13,32 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "scooby.boo — projekty Krzysia 🐹" },
-      { name: "description", content: "Hub projektów Krzysia. Polish vibe-coding." },
+      {
+        name: "description",
+        content:
+          "Hub projektów Krzysia. Polskie webappki, skrypty Python i boty Discord — cytaty, dowcipy i wyszukiwarka polskiego audio.",
+      },
       { property: "og:title", content: "scooby.boo — projekty Krzysia 🐹" },
-      { property: "og:description", content: "Hub projektów Krzysia." },
+      {
+        property: "og:description",
+        content: "Hub projektów Krzysia. Polskie webappki, skrypty Python i boty Discord.",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListElement: projects.map((p, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: p.url,
+            name: p.name,
+            description: p.description,
+          })),
+        }),
+      },
     ],
   }),
   component: Home,
