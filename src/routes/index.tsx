@@ -12,16 +12,16 @@ import hamster from "@/assets/hamster.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "scooby.boo — projekty Krzysia 🐹" },
+      { title: "scooby.boo 🐹" },
       {
         name: "description",
         content:
-          "Hub projektów Krzysia. Polskie webappki, skrypty Python i boty Discord — cytaty, dowcipy i wyszukiwarka polskiego audio.",
+          "Hub projektów Krzysia.",
       },
-      { property: "og:title", content: "scooby.boo — projekty Krzysia 🐹" },
+      { property: "og:title", content: "scooby.boo 🐹" },
       {
         property: "og:description",
-        content: "Hub projektów Krzysia. Polskie webappki, skrypty Python i boty Discord.",
+        content: "Hub projektów Krzysia.",
       },
     ],
     scripts: [
