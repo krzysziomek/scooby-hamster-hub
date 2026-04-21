@@ -119,7 +119,7 @@ function Home() {
             transition={{ delay: 0.55 }}
             className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg"
           >
-            Mała norka pełna projektów! Wbijaj, klikaj, baw się dobrze. 🧀
+            Mała norka pełna projektów! Wbijaj, klikaj, baw się dobrze. 🐹
           </motion.p>
         </section>
 
@@ -143,8 +143,7 @@ function Home() {
         {/* Footer */}
         <footer className="mt-20 flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <span className="animate-bounce-slow text-lg">🐹</span>
-            <span>made with </span>
+            <span>Made with </span>
             <span className="animate-bounce-slow text-lg">🧀</span>
             <span> by Krzyś</span>
           </div>
